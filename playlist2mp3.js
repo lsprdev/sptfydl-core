@@ -27,14 +27,15 @@ async function getPlaylistTracks(playlistId) {
         const tracks = playlist.body.tracks.items;
         for (const track of tracks) {
             const trackName = track.track.name;
+            const playlistName = playlist.body.name;
             const artistName = track.track.artists[0].name;
             const albumName = track.track.album.name;
             const imageUrl = track.track.album.images.length > 0 ? track.track.album.images[0].url : null;
             const youtubeVideoUrl = await getYoutubeVideoUrl(trackName, artistName);
-            if (!fs.existsSync(`./songs/${artistName} - ${albumName}`)) {
-                fs.mkdirSync(`./songs/${artistName} - ${albumName}`);
+            if (!fs.existsSync(`./songs/${playlistName}`)) {
+                fs.mkdirSync(`./songs/${playlistName}`);
             }
-            await downloadMp3FromVideo(youtubeVideoUrl, `./songs/${artistName} - ${albumName}/${trackName}.mp3`)
+            await downloadMp3FromVideo(youtubeVideoUrl, `./songs/${playlistName}/${artistName} - ${trackName}.mp3`)
         }
 }
 
