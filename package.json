@@ -26,6 +26,6 @@
     "node-id3": "^0.2.6",
     "puppeteer": "^19.7.2",
     "spotify-web-api-node": "^5.0.2",
-    "ytdl-core": "^4.11.2"
+    "ytdl-core": "^4.11.3"
   }
 }
